@@ -10,4 +10,5 @@ public interface IUserService {
     Iterable<User> getAllUsers();
     User updateUser(User user);
     boolean deleateUser(Long id);
+    Optional<User> getUserByEmail(String email);
 }

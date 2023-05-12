@@ -2,6 +2,7 @@ package com.example.invertech.application;
 
 
 import com.example.invertech.domain.models.User;
+import com.example.invertech.domain.puertos.IUserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements IUserService {
-    private final com.example.invertech.domain.puertos.IUserRepository IUserRepository;
+    private final IUserRepository IUserRepository;
 
     @Override
     public User saveUser(User user) {
@@ -35,5 +36,10 @@ public class UserServiceImpl implements IUserService {
     @Override
     public boolean deleateUser(Long id) {
         return IUserRepository.deleateUser(id);
+    }
+
+    @Override
+    public Optional<User> getUserByEmail(String email) {
+        return IUserRepository.getByEmail(email);
     }
 }

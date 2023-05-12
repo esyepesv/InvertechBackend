@@ -67,4 +67,14 @@ public class UserRepositoryImpl implements IUserRepository {
         }*/
         return true;
     }
+
+    @Override
+    public Optional<User> getByEmail(String email) {
+        UserEntity user = userRepositoryDB.findByEmail(email).orElseThrow(
+                () -> new RuntimeException("No existe")
+        );
+        return Optional.of(userMapper.toUser(user));
+    }
+
+
 }

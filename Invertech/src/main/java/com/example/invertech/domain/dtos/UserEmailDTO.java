@@ -3,7 +3,6 @@ package com.example.invertech.domain.dtos;
 import lombok.Data;
 
 @Data
-public class UpdateEmailDTO {
-    private Long id;
+public class UserEmailDTO {
     private String email;
 }

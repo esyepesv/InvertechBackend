@@ -10,4 +10,5 @@ public interface IUserRepository {
     Iterable<User> getAllUsers();
     User updateUser(User user);
     boolean deleateUser(Long id);
+    Optional<User> getByEmail(String Email);
 }

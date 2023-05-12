@@ -2,7 +2,8 @@ package com.example.invertech.infraestructure.rest.controllers;
 
 import com.example.invertech.application.IUserService;
 import com.example.invertech.application.UserUseCase;
-import com.example.invertech.domain.dtos.UpdateEmailDTO;
+import com.example.invertech.domain.dtos.UserEmailDTO;
+import com.example.invertech.domain.dtos.UserUpdateEmailDTO;
 import com.example.invertech.domain.models.User;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -39,8 +40,14 @@ public class UserController {
     }
 
     @PostMapping("/actualizaremail")
-    public ResponseEntity<User> updateEmail(@RequestBody UpdateEmailDTO updateEmailDTO){
+    public ResponseEntity<User> updateEmail(@RequestBody UserUpdateEmailDTO updateEmailDTO){
 
         return new ResponseEntity<>(userUseCase.updateEmail(updateEmailDTO), HttpStatus.OK);
     }
+
+    @GetMapping("/userbyemail")
+    public ResponseEntity<Optional<User>> getUserByEmail(@RequestBody UserEmailDTO emailDTO){
+        return new ResponseEntity<>(iUserService.getUserByEmail(emailDTO.getEmail()), HttpStatus.OK);
+    }
+
 }
