@@ -32,7 +32,7 @@ public class User implements UserDetails {
   //@Enumerated quiere decir que es un enum y se indica el tipo
   @Enumerated(EnumType.STRING)
   private Role role;
-
+  private boolean isPremium;
 
   @OneToMany(mappedBy = "user")
   private List<Token> tokens;

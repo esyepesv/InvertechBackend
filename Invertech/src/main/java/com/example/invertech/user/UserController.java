@@ -15,7 +15,14 @@ public class UserController {
 
     @PostMapping("/getUserLoggedData")
     public ResponseEntity<UserLoggedDTO> getUserLoggedData(@RequestBody UserLoggedRequest request) {
+        System.out.println("Usuario premium" + userService.getUserData(request.getEmail()).isPremium());
         return ResponseEntity.ok(userService.getUserData(request.getEmail()));
+    }
+
+    @PostMapping("/setUserPremium")
+    public ResponseEntity<UserLoggedDTO> setUserPremium(@RequestBody UserLoggedRequest request) {
+        System.out.println("setUserPremium");
+        return ResponseEntity.ok(userService.setUserPremium(request.getEmail()));
     }
 
     @GetMapping("/prueba")

@@ -13,4 +13,5 @@ public class UserLoggedDTO {
     private String email;
     @Enumerated(EnumType.STRING)
     private Role role;
+    private boolean isPremium;
 }
