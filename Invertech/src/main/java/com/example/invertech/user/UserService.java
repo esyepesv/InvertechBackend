@@ -1,5 +1,6 @@
 package com.example.invertech.user;
 
+import com.example.invertech.dto.IsFirstTimeResponse;
 import com.example.invertech.dto.UserLoggedDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ public class UserService {
                 .email(user.getEmail())
                 .role(user.getRole())
                 .isPremium(user.isPremium())
+                .firstTime(user.isFirstTime())
                 .build();
     }
     public UserLoggedDTO setUserPremium(String email){
@@ -29,6 +31,28 @@ public class UserService {
                 .email(user.getEmail())
                 .role(user.getRole())
                 .isPremium(user.isPremium())
+                .build();
+    }
+
+    public IsFirstTimeResponse isFirstTime(String email) {
+        User user = repository.findByEmail(email).get();
+        if (user.isFirstTime()) {
+            return IsFirstTimeResponse.builder()
+                    .firstTime(true)
+                    .build();
+        }else{
+            return IsFirstTimeResponse.builder()
+                    .firstTime(false)
+                    .build();
+        }
+    }
+
+    public IsFirstTimeResponse setFirstTimeFalse(String email) {
+        User user = repository.findByEmail(email).get();
+        user.setFirstTime(false);
+        user = repository.save(user);
+        return IsFirstTimeResponse.builder()
+                .firstTime(false)
                 .build();
     }
 }

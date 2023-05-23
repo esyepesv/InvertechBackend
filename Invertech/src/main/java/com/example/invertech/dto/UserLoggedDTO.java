@@ -14,4 +14,5 @@ public class UserLoggedDTO {
     @Enumerated(EnumType.STRING)
     private Role role;
     private boolean isPremium;
+    private boolean firstTime;
 }

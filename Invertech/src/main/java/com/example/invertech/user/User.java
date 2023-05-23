@@ -33,6 +33,7 @@ public class User implements UserDetails {
   @Enumerated(EnumType.STRING)
   private Role role;
   private boolean isPremium;
+  private boolean firstTime;
 
   @OneToMany(mappedBy = "user")
   private List<Token> tokens;
